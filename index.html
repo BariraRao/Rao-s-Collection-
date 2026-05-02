@@ -50,7 +50,7 @@
             <div class="info">
                 <div class="title-row"><h3>Royal Sapphire</h3><span class="price">$1,200</span></div>
                 <p class="details">Origin: Sri Lanka | Clarity: VVS Grade</p>
-                <button class="buy-btn">INQUIRE NOW</button>
+                <button class="buy-btn" onclick="sendEmail('Royal Sapphire')">INQUIRE NOW</button>
             </div>
         </div>
         <div class="card">
@@ -58,7 +58,7 @@
             <div class="info">
                 <div class="title-row"><h3>Mexican Fire Opal</h3><span class="price">$850</span></div>
                 <p class="details">Origin: Mexico | Effect: Iridescent Glow</p>
-                <button class="buy-btn">INQUIRE NOW</button>
+                <button class="buy-btn" onclick="sendEmail('Mexican Fire Opal')">INQUIRE NOW</button>
             </div>
         </div>
         <div class="card">
@@ -66,7 +66,7 @@
             <div class="info">
                 <div class="title-row"><h3>Royal Emerald</h3><span class="price">$1,500</span></div>
                 <p class="details">Origin: Colombia | Clarity: Eye-Clean</p>
-                <button class="buy-btn">INQUIRE NOW</button>
+                <button class="buy-btn" onclick="sendEmail('Royal Emerald')">INQUIRE NOW</button>
             </div>
         </div>
     </div>
@@ -87,6 +87,14 @@
             localStorage.removeItem('user');
             window.location.href = "login.html";
         }
+    function sendEmail(gemName) {
+    const email = "btwsamiyamalik@gmail.com"; // Yahan apni sahi email likhein
+    const subject = "Inquiry about " + gemName;
+    const body = "Hello, I am interested in the " + gemName + ". Please provide more details.";
+    
+    // Ye line user ka email app (Outlook/Gmail) khol degi
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
     </script>
 </body>
 </html>
