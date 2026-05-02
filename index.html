@@ -5,98 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rao's Collection | Premium Gems</title>
     <style>
-        /* CSS Section - Isay mat chirna */
-        body {
-            background-color: #0f0f0f;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background: #1a1a1a;
-            padding: 40px 20px;
-            border-bottom: 3px solid #d4af37;
-        }
-        h1 { color: #d4af37; margin: 0; letter-spacing: 3px; font-size: 2rem; }
-        .grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            padding: 30px 20px;
-        }
-        .card {
-            background: #1e1e1e;
-            width: 100%;
-            max-width: 350px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #333;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        .info { padding: 20px; }
-        .info h3 { color: #d4af37; margin: 10px 0; font-size: 1.4rem; }
-        .info p { color: #bbb; font-size: 0.9rem; margin-bottom: 20px; }
-        
-        /* Buy Now Button Style */
-        .buy-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #d4af37;
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: 0.3s ease;
-        }
-        .buy-btn:hover {
-            background-color: #fff;
-            transform: scale(1.05);
-        }
+        body { background-color: #ffffff; color: #333333; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
+        header { padding: 60px 20px; background: #f9f9f9; border-bottom: 1px solid #eeeeee; }
+        h1 { color: #c49929; font-size: 2.8rem; letter-spacing: 5px; margin: 0; }
+        header p { color: #888; font-size: 1rem; margin-top: 15px; }
+
+        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 60px 40px; }
+        .card { background: #ffffff; width: 330px; border-radius: 12px; overflow: hidden; border: 1px solid #eeeeee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.4s; }
+        .card:hover { transform: translateY(-10px); }
+
+        .img-container { width: 100%; height: 270px; overflow: hidden; cursor: zoom-in; }
+        .card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+
+        .info { padding: 25px; text-align: left; }
+        .title-price { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .info h3 { color: #c49929; margin: 0; font-size: 1.4rem; }
+        .price-text { color: #333; font-weight: bold; }
+
+        .action-btns { display: flex; gap: 15px; margin-top: 20px; }
+        .buy-btn { flex: 2; padding: 14px; background: #c49929; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; text-align: center; }
+        .detail-link { flex: 1; color: #777; border: none; background: none; cursor: pointer; text-decoration: underline; }
+
+        /* Modal Styles */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; width: 90%; max-width: 500px; border-radius: 15px; overflow: hidden; position: relative; padding-bottom: 20px; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 30px; color: #333; cursor: pointer; z-index: 10; }
+        .modal-img { width: 100%; max-height: 400px; object-fit: contain; }
+        .modal-text { padding: 20px; text-align: left; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>RAO'S COLLECTION</h1>
-        <p style="color: #888; margin-top: 10px;">The Luxury Gemstone Boutique</p>
-    </header>
+<header>
+    <h1>RAO'S COLLECTION</h1>
+    <p>Exquisite Stones, Timeless Elegance</p>
+</header>
 
-    <div class="grid">
-        <div class="card">
-            <img src="s1.jpg" alt="Royal Sapphire">
-            <div class="info">
-                <h3>Royal Sapphire</h3>
-                <p>Origin: Sri Lanka | Quality: AAA+</p>
-                <a href="mailto:btwsamiyamalik@gmail.com?subject=Inquiry for Sapphire" class="buy-btn">Inquire via Email</a>
-            </div>
+<div class="grid">
+    <div class="card">
+        <div class="img-container" onclick="openModal('sapphire', 's1.jpg')">
+            <img src="s1.jpg" alt="Sapphire">
         </div>
-
-        <div class="card">
-            <img src="o1.png" alt="Fire Opal">
-            <div class="info">
-                <h3>Mexican Fire Opal</h3>
-                <p>Natural Iridescent Finish</p>
-                <a href="mailto:btwsamiyamalik@gmail.com?subject=Inquiry for Opal" class="buy-btn">Inquire via Email</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="e1.png" alt="Zambian Emerald">
-            <div class="info">
-                <h3>Zambian Emerald</h3>
-                <p>Deep Green Precision Cut</p>
-                <a href="mailto:btwsamiyamalik@gmail.com?subject=Inquiry for Emerald" class="buy-btn">Inquire via Email</a>
+        <div class="info">
+            <div class="title-price"><h3>Royal Sapphire</h3> <span class="price-text">$1,200</span></div>
+            <div class="action-btns">
+                <a href="mailto:btwsamiyamalik@gmail.com?subject=Sapphire Inquiry" class="buy-btn">Inquire Now</a>
+                <button class="detail-link" onclick="openModal('sapphire', 's1.jpg')">Details</button>
             </div>
         </div>
     </div>
+
+    <div class="card">
+        <div class="img-container" onclick="openModal('emerald', 'e1.png')">
+            <img src="e1.png" alt="Emerald">
+        </div>
+        <div class="info">
+            <div class="title-price"><h3>Zambian Emerald</h3> <span class="price-text">$2,500</span></div>
+            <div class="action-btns">
+                <a href="mailto:btwsamiyamalik@gmail.com?subject=Emerald Inquiry" class="buy-btn">Inquire Now</a>
+                <button class="detail-link" onclick="openModal('emerald', 'e1.png')">Details</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="img-container" onclick="openModal('opal', 'o1.png')">
+            <img src="o1.png" alt="Opal">
+        </div>
+        <div class="info">
+            <div class="title-price"><h3>Premium Opal</h3> <span class="price-text">$850</span></div>
+            <div class="action-btns">
+                <a href="mailto:btwsamiyamalik@gmail.com?subject=Opal Inquiry" class="buy-btn">Inquire Now</a>
+                <button class="detail-link" onclick="openModal('opal', 'o1.png')">Details</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img id="modalImg" class="modal-img" src="">
+        <div class="modal-text" id="modalText"></div>
+    </div>
+</div>
+
+<script>
+    const data = {
+        'sapphire': { title: 'Royal Ceylon Sapphire', desc: 'Sourced from Sri Lanka. VVS Clarity.' },
+        'emerald': { title: 'Zambian Emerald', desc: 'Deep green hue, octagon precision cut.' },
+        'opal': { title: 'Mexican Fire Opal', desc: 'Stunning iridescent glow and play of color.' }
+    };
+
+    function openModal(key, src) {
+        document.getElementById('modalImg').src = src;
+        document.getElementById('modalText').innerHTML = `<h3>${data[key].title}</h3><p>${data[key].desc}</p>`;
+        document.getElementById('modalOverlay').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
