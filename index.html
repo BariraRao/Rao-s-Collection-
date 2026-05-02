@@ -3,108 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rao's Collection | Boutique</title>
+    <title>Rao's Collection | Premium Gems</title>
     <style>
-        :root {
-            --bg: #ffffff; --text: #333333; --card: #ffffff; --gold: #b08d21; --head: #fdfdfd;
-        }
-        [data-theme="dark"] {
-            --bg: #0a0a0a; --text: #ffffff; --card: #111111; --head: #151515;
-        }
+        :root { --bg: #ffffff; --text: #333; --card: #ffffff; --gold: #b08d21; --head: #f9f9f9; }
+        [data-theme="dark"] { --bg: #0a0a0a; --text: #eee; --card: #111; --head: #151515; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
-        body { background: var(--bg); color: var(--text); transition: 0.4s; text-align: center; }
+        body { background: var(--bg); color: var(--text); transition: 0.5s; text-align: center; }
 
-        /* Top Bar for Buttons */
-        .top-bar {
-            display: flex; justify-content: flex-end; gap: 15px; padding: 15px 20px;
-            position: absolute; width: 100%; top: 0;
-        }
-        .nav-btn {
-            background: none; border: 1px solid var(--gold); color: var(--gold);
-            padding: 5px 12px; cursor: pointer; font-size: 0.65rem; letter-spacing: 1px;
-            text-transform: uppercase; transition: 0.3s;
-        }
-        .nav-btn:hover { background: var(--gold); color: white; }
+        .top-nav { display: flex; justify-content: flex-end; gap: 10px; padding: 15px 20px; position: absolute; width: 100%; top: 0; }
+        .btn-sm { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 4px 10px; cursor: pointer; font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase; }
 
         header { padding: 80px 20px 40px; background: var(--head); border-bottom: 1px solid rgba(176,141,33,0.1); }
-        h1 { color: var(--gold); font-size: 2.2rem; letter-spacing: 4px; margin-bottom: 10px; }
-        header p { color: #888; font-size: 0.9rem; letter-spacing: 1px; }
+        h1 { color: var(--gold); font-size: 2.2rem; letter-spacing: 5px; }
+        header p { color: #888; font-size: 0.9rem; margin-top: 10px; }
 
-        /* Grid System */
         .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 40px 20px; }
-        .card { 
-            background: var(--card); width: 100%; max-width: 340px; 
-            border-radius: 8px; overflow: hidden; border: 1px solid rgba(176,141,33,0.1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s;
-        }
-        .card img { width: 100%; height: auto; display: block; }
+        .card { background: var(--card); width: 100%; max-width: 340px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(176,141,33,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card img { width: 100%; height: auto; }
         .info { padding: 20px; text-align: left; }
-        .title-price { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .title-price h3 { color: var(--gold); font-size: 1.1rem; }
+        .title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .title-row h3 { color: var(--gold); font-size: 1.1rem; }
         .price { font-weight: bold; }
-        .details { color: #777; font-size: 0.85rem; margin-bottom: 20px; }
-        .buy-btn { 
-            width: 100%; padding: 12px; background: var(--gold); color: white; 
-            border: none; cursor: pointer; font-weight: bold; letter-spacing: 1px;
-        }
+        .details { color: #777; font-size: 0.8rem; margin-bottom: 15px; }
+        .buy-btn { width: 100%; padding: 12px; background: var(--gold); color: white; border: none; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-
     <script>
         if (!localStorage.getItem('user')) { window.location.href = "login.html"; }
     </script>
 
-    <div class="top-bar">
-        <button class="nav-btn" onclick="toggleTheme()" id="themeBtn">Dark Mode</button>
-        <button class="nav-btn" onclick="logout()">Logout</button>
+    <div class="top-nav">
+        <button class="btn-sm" onclick="toggleTheme()" id="tBtn">Dark Mode</button>
+        <button class="btn-sm" onclick="logout()">Logout</button>
     </div>
 
     <header>
         <h1>RAO'S COLLECTION</h1>
-        <p>Timeless Elegance & Rare Stones</p>
+        <p>Exquisite Stones, Timeless Elegance</p>
     </header>
 
     <div class="grid">
         <div class="card">
             <img src="s1.jpg" alt="Sapphire">
             <div class="info">
-                <div class="title-price">
-                    <h3>Royal Sapphire</h3>
-                    <span class="price">$1,200</span>
-                </div>
+                <div class="title-row"><h3>Royal Sapphire</h3><span class="price">$1,200</span></div>
                 <p class="details">Origin: Sri Lanka | Clarity: VVS Grade</p>
                 <button class="buy-btn">INQUIRE NOW</button>
             </div>
         </div>
-        
-        </div>
- <div class="card">
-            <img src="o1.png" alt="Fire Opal"> <div class="info">
-                <div class="title-price">
-                    <h3>Mexican Fire Opal</h3>
-                    <span class="price">$850</span>
-                </div>
+        <div class="card">
+            <img src="o1.png" alt="Opal">
+            <div class="info">
+                <div class="title-row"><h3>Mexican Fire Opal</h3><span class="price">$850</span></div>
                 <p class="details">Origin: Mexico | Effect: Iridescent Glow</p>
                 <button class="buy-btn">INQUIRE NOW</button>
             </div>
         </div>
-
         <div class="card">
-            <img src="e1.png" alt="Emerald"> <div class="info">
-                <div class="title-price">
-                    <h3>Royal Emerald</h3>
-                    <span class="price">$1,500</span>
-                </div>
+            <img src="e1.png" alt="Emerald">
+            <div class="info">
+                <div class="title-row"><h3>Royal Emerald</h3><span class="price">$1,500</span></div>
                 <p class="details">Origin: Colombia | Clarity: Eye-Clean</p>
                 <button class="buy-btn">INQUIRE NOW</button>
             </div>
         </div>
+    </div>
+
     <script>
         function toggleTheme() {
             const html = document.documentElement;
-            const btn = document.getElementById('themeBtn');
+            const btn = document.getElementById('tBtn');
             if (html.hasAttribute('data-theme')) {
                 html.removeAttribute('data-theme');
                 btn.innerText = "Dark Mode";
@@ -113,7 +83,6 @@
                 btn.innerText = "Light Mode";
             }
         }
-
         function logout() {
             localStorage.removeItem('user');
             window.location.href = "login.html";
