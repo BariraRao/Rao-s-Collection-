@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rao's Collection | Exclusive Entry</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
+        
+        body {
+            background-color: #0a0a0a; /* Royal Black */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #b08d21; /* Gold Border */
+            position: relative;
+        }
+
+        /* Decorative Gold Corners */
+        .login-container::before {
+            content: "";
+            position: absolute;
+            top: -5px; left: -5px; width: 20px; height: 20px;
+            border-top: 2px solid #b08d21; border-left: 2px solid #b08d21;
+        }
+
+        h1 {
+            color: #b08d21;
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .sub-text {
+            color: #666;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #111;
+            border: 1px solid #222;
+            color: #b08d21;
+            outline: none;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        input:focus { border-color: #b08d21; }
+
+        .gold-btn {
+            width: 100%;
+            padding: 15px;
+            background: #b08d21;
+            color: white;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .gold-btn:hover {
+            background: transparent;
+            border: 1px solid #b08d21;
+            color: #b08d21;
+        }
+
+        .switch-link {
+            color: #444;
+            font-size: 0.8rem;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        .switch-link span { color: #b08d21; }
+
+        .hidden { display: none; }
+    </style>
+    <style>
+    /* Light/Dark Variables */
+    :root {
+        --bg: #ffffff;
+        --text: #333333;
+        --card-bg: #ffffff;
+        --gold: #b08d21;
+    }
+
+    [data-theme="dark"] {
+        --bg: #0a0a0a;
+        --text: #ffffff;
+        --card-bg: #111111;
+    }
+
+    body { background-color: var(--bg); color: var(--text); transition: 0.5s; }
+    
+    /* Header Styles */
+    header { position: relative; padding: 60px 20px; border-bottom: 1px solid rgba(176, 141, 33, 0.2); }
+    h1 { color: var(--gold); letter-spacing: 5px; }
+
+    /* Card Adjustments */
+    .card { background: var(--card-bg); border: 1px solid rgba(176, 141, 33, 0.1); }
+    
+    /* Toggle Button */
+    .theme-btn {
+        position: absolute; top: 20px; right: 110px; /* Logout se thora pehle */
+        background: none; border: 1px solid var(--gold); color: var(--gold);
+        padding: 5px 10px; cursor: pointer; border-radius: 20px; font-size: 0.6rem;
+    }
+</style>
+
+<header>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeToggle">DARK MODE</button>
+    
+    <a href="#" onclick="logout()" style="position: absolute; top: 20px; right: 30px; color: var(--gold); text-decoration: none; font-size: 0.7rem; letter-spacing: 2px;">
+        LOGOUT
+    </a>
+
+    <h1>RAO'S COLLECTION</h1>
+    <p>Exquisite Stones, Timeless Elegance</p>
+</header>
+</head>
+<body>
+
+    <div class="login-container" id="regForm">
+        <h1>Rao's</h1>
+        <div class="sub-text">Create Account</div>
+        <input type="text" id="rUser" placeholder="USERNAME">
+        <input type="password" id="rPass" placeholder="PASSWORD">
+        <button class="gold-btn" onclick="saveData()">Sign Up</button>
+        <div class="switch-link" onclick="toggle()">Already Member? <span>Login</span></div>
+    </div>
+
+    <div class="login-container hidden" id="logForm">
+        <h1>Rao's</h1>
+        <div class="sub-text">Private Collection Access</div>
+        <input type="text" id="lUser" placeholder="USERNAME">
+        <input type="password" id="lPass" placeholder="PASSWORD">
+        <button class="gold-btn" onclick="checkData()">Enter Boutique</button>
+        <div class="switch-link" onclick="toggle()">New Guest? <span>Register</span></div>
+    </div>
+
+    <script>
+        function toggle() {
+            document.getElementById('regForm').classList.toggle('hidden');
+            document.getElementById('logForm').classList.toggle('hidden');
+        }
+
+        function saveData() {
+            const u = document.getElementById('rUser').value;
+            const p = document.getElementById('rPass').value;
+            if(u && p) {
+                localStorage.setItem('user', u);
+                localStorage.setItem('pass', p);
+                alert('Account Registered.');
+                toggle();
+            }
+        }
+
+        function checkData() {
+            const u = document.getElementById('lUser').value;
+            const p = document.getElementById('lPass').value;
+            if(u === localStorage.getItem('user') && p === localStorage.getItem('pass')) {
+                window.location.href = 'index.html';
+            } else {
+                alert('Access Denied.');
+            }
+        }
+        function toggleTheme() {
+    const body = document.documentElement;
+    const currentTheme = body.getAttribute('data-theme');
+    const btn = document.getElementById('themeToggle');
+
+    if (currentTheme === 'dark') {
+        body.removeAttribute('data-theme');
+        btn.innerText = "DARK MODE";
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        btn.innerText = "LIGHT MODE";
+    }
+}
+    </script>
+</body>
+</html>
